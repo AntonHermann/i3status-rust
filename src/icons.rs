@@ -58,9 +58,9 @@ lazy_static! {
         "memory_swap" => " \u{f0a0} ",
         "cpu" => " \u{f0e4} ",
         "bat" => " \u{f242} ",
-        "bat_full" => " \u{f240} ",
-        "bat_charging" => " \u{f1e6} ",
-        "bat_discharging" => " \u{f242} ",
+        "bat_full" => " \u{f240}  ",
+        "bat_charging" => " \u{f1e6}  ",
+        "bat_discharging" => " \u{f242}  ",
         "update" => " \u{f062} ",
         "toggle_off" => " \u{f204} ",
         "toggle_on" => " \u{f205} ",
@@ -76,11 +76,11 @@ lazy_static! {
         "net_wireless" => " \u{f1eb} ",
         "net_wired" => " \u{f0ac} ",
         "ping" => " \u{21ba} ",
-        "backlight_empty" => " \u{1f315} ",
-        "backlight_partial1" => " \u{1f314} ",
+        "backlight_empty"    => " \u{1f311} ",
+        "backlight_partial1" => " \u{1f312} ",
         "backlight_partial2" => " \u{1f313} ",
-        "backlight_partial3" => " \u{1f312} ",
-        "backlight_full" => " \u{1f311} ",
+        "backlight_partial3" => " \u{1f314} ",
+        "backlight_full"     => " \u{1f315} ",
         "weather_sun" => " \u{f185} ",
         "weather_snow" => " \u{f2dc} ",
         "weather_thunder" => " \u{f0e7} ",
@@ -92,7 +92,7 @@ lazy_static! {
 
     pub static ref MATERIAL: Map<String, String> = map_to_owned! {
         "" => "",
-        "time" => " \u{e192} ",
+        "time" => " \u{e192}  ",
         "music" => " \u{e405} ",
         "music_play" => "  \u{e037}  ",
         "music_pause" => "  \u{e034}  ",
@@ -113,7 +113,7 @@ lazy_static! {
         "volume_half" => " \u{e04d} ",
         "volume_empty" => " \u{e04e} ",
         // This icon has no spaces around it because it is manually set as text. (sound.rs)
-        "volume_muted" => "\u{e04f}",
+        "volume_muted" => "\u{e04f} ",
         "thermometer" => " \u{f2c8} ", // TODO
         "xrandr" => " \u{e31e} "
     };

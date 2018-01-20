@@ -25,7 +25,7 @@ impl ButtonWidget {
                 "full_text": "",
                 "separator": false,
                 "separator_block_width": 0,
-                "background": "#000000",
+                // "background": "#000000",
                 "color": "#000000"
             }),
             config: config,
@@ -67,7 +67,7 @@ impl ButtonWidget {
     }
 
     fn update(&mut self) {
-        let (key_bg, key_fg) = self.state.theme_keys(&self.config.theme);
+        let (_key_bg, key_fg) = self.state.theme_keys(&self.config.theme);
 
         self.rendered = json!({
             "full_text": format!("{}{} ",
@@ -76,7 +76,7 @@ impl ButtonWidget {
             "separator": false,
             "name": self.id.clone(),
             "separator_block_width": 0,
-            "background": key_bg,
+            // "background": key_bg,
             "color": key_fg
         });
 

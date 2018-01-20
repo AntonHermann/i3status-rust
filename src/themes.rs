@@ -56,20 +56,20 @@ lazy_static! {
     };
 
     pub static ref PLAIN: Theme = Theme {
-        idle_bg: "#000000".to_owned(),
+        idle_bg: "#00000000".to_owned(),
         idle_fg: "#93a1a1".to_owned(),
-        info_bg: "#000000".to_owned(),
+        info_bg: "#00000000".to_owned(),
         info_fg: "#93a1a1".to_owned(),
-        good_bg: "#000000".to_owned(),
+        good_bg: "#00000000".to_owned(),
         good_fg: "#859900".to_owned(),
-        warning_bg: "#000000".to_owned(),
+        warning_bg: "#00000000".to_owned(),
         warning_fg: "#b58900".to_owned(),
-        critical_bg: "#000000".to_owned(),
+        critical_bg: "#00000000".to_owned(),
         critical_fg: "#dc322f".to_owned(),
         separator: "| ".to_owned(),
-        separator_bg: "#000000".to_owned(),
+        separator_bg: "#00000000".to_owned(),
         separator_fg: "#a9a9a9".to_owned(),
-        alternating_tint_bg: "#000000".to_owned(),
+        alternating_tint_bg: "#00000000".to_owned(),
         alternating_tint_fg: "#000000".to_owned(),
     };
 

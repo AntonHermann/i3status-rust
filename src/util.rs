@@ -71,14 +71,14 @@ macro_rules! map_to_owned (
 );
 
 struct PrintState {
-    pub last_bg: Option<String>,
+    // pub last_bg: Option<String>,
     pub has_predecessor: bool,
 }
 
 impl PrintState {
-    fn set_last_bg(&mut self, bg: String) {
-        self.last_bg = Some(bg);
-    }
+    // fn set_last_bg(&mut self, bg: String) {
+    //     self.last_bg = Some(bg);
+    // }
     fn set_predecessor(&mut self, pre: bool) {
         self.has_predecessor = pre;
     }
@@ -87,7 +87,7 @@ impl PrintState {
 pub fn print_blocks(order: &Vec<String>, block_map: &HashMap<String, &mut Block>, config: &Config) -> Result<()> {
     let mut state = PrintState {
         has_predecessor: false,
-        last_bg: None,
+        // last_bg: None,
     };
 
     print!("[");
@@ -100,43 +100,46 @@ pub fn print_blocks(order: &Vec<String>, block_map: &HashMap<String, &mut Block>
             continue;
         }
         let first = widgets[0];
-        let color = first.get_rendered()["background"]
-            .as_str()
-            .internal_error("util", "couldn't get background color")?;
+        // let color = first.get_rendered()["background"]
+        //     .as_str()
+        //     .internal_error("util", "couldn't get background color")?;
 
         let sep_fg = if config.theme.separator_fg == "auto" {
-            color
+            // color
+            &config.theme.separator_fg
         } else {
             &config.theme.separator_fg
         };
 
-        let sep_bg = if config.theme.separator_bg == "auto" {
-            state.last_bg.clone()
-        } else {
-            Some(config.theme.separator_bg.clone())
-        };
+        // let _sep_bg = if config.theme.separator_bg == "auto" {
+        //     state.last_bg.clone()
+        // } else {
+        //     Some(config.theme.separator_bg.clone())
+        // };
 
         let separator = json!({
                     "full_text": config.theme.separator,
                     "separator": false,
                     "separator_block_width": 0,
-                    "background": if sep_bg.is_some() { Value::String(sep_bg.unwrap()) } else { Value::Null },
+                    // "background": if sep_bg.is_some() { Value::String(_sep_bg.unwrap()) } else { Value::Null },
+                    "background": Value::Null,
                     "color": sep_fg
                 });
-        print!("{}{},", if state.has_predecessor { "," } else { "" },
-               separator.to_string());
+        if state.has_predecessor {
+            print!(",{},", separator.to_string());
+        }
         print!("{}", first.to_string());
-        state.set_last_bg(color.to_owned());
+        // state.set_last_bg(color.to_owned());
         state.set_predecessor(true);
 
         for widget in widgets.iter().skip(1) {
             print!("{}{}", if state.has_predecessor { "," } else { "" },
                    widget.to_string());
-            state.set_last_bg(String::from(
-                widget.get_rendered()["background"]
-                    .as_str()
-                    .internal_error("util", "couldn't get background color")?,
-            ));
+            // state.set_last_bg(String::from(
+            //     widget.get_rendered()["background"]
+            //         .as_str()
+            //         .internal_error("util", "couldn't get background color")?,
+            // ));
             state.set_predecessor(true);
         }
     }

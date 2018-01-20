@@ -12,7 +12,8 @@ use config::Config;
 use de::deserialize_duration;
 use errors::*;
 use widgets::button::ButtonWidget;
-use widget::{I3BarWidget, State};
+// use widget::{I3BarWidget, State};
+use widget::I3BarWidget;
 use input::{I3BarEvent, MouseButton};
 
 use uuid::Uuid;
@@ -145,22 +146,23 @@ impl Sound {
 
         if device.muted {
             self.text.set_icon("volume_empty");
-            self.text.set_text(
-                self.config
-                    .icons
-                    .get("volume_muted")
-                    .block_error("sound", "cannot find icon")?
-                    .to_owned(),
-            );
-            self.text.set_state(State::Warning);
+            // self.text.set_text(
+            //     self.config
+            //         .icons
+            //         .get("volume_muted")
+            //         .block_error("sound", "cannot find icon")?
+            //         .to_owned(),
+            // );
+            // self.text.set_state(State::Warning);
+            self.text.set_text(format!(" ({:02}%)", device.volume));
         } else {
             self.text.set_icon(match device.volume {
                 0...20 => "volume_empty",
                 21...70 => "volume_half",
                 _ => "volume_full",
             });
-            self.text.set_text(format!("{:02}%", device.volume));
-            self.text.set_state(State::Idle);
+            self.text.set_text(format!(" {:02}%", device.volume));
+            // self.text.set_state(State::Idle);
         }
 
         Ok(())
